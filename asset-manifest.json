@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/DataVisualizationApps/static/js/main.00e63369.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/DataVisualizationApps/static/js/787.c4e7f8f9.chunk.js",
-    "index.html": "/DataVisualizationApps/index.html",
-    "main.00e63369.js.map": "/DataVisualizationApps/static/js/main.00e63369.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/DataVisualizationApps/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.js": "./website/3DBar/static/js/main.fc533d65.js",
+    "static/js/787.c4e7f8f9.chunk.js": "./website/3DBar/static/js/787.c4e7f8f9.chunk.js",
+    "index.html": "./website/3DBar/index.html",
+    "main.fc533d65.js.map": "./website/3DBar/static/js/main.fc533d65.js.map",
+    "787.c4e7f8f9.chunk.js.map": "./website/3DBar/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.00e63369.js"
+    "static/js/main.fc533d65.js"
   ]
 }
