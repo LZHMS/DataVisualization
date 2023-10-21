@@ -26,3 +26,7 @@ To work with icons in a react project we need to use the `echart-for-react` pack
 ### `npm start`
 
 After preparing the above things, we can start the project now in a browser.
+
+## Experiments
+### 3D Bar
+<img src="https://cdn.jsdelivr.net/gh/LZHMS/picx-images-hosting@master/EBlog/Courses/image.4h2k896widm0.webp" alt="image" />
