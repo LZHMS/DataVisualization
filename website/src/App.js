@@ -3685,7 +3685,7 @@ export default function App() {
         visualMap: {
           min: 5,
           max: 25,
-          show: true,
+          // show: true,
           inRange: {
             color: [
               '#313695',
