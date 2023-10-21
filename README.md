@@ -35,9 +35,9 @@ Now we can make some experiments with the echarts library about data visualizati
 ### Step 1: Add `homepage` to `package.json`
 Open your `package.json` and add a `homepage` field for your project, taking my project as an example:
 ```json
-  "homepage": "website",
+  "homepage": "./",
 ```
-That's take your react project directory as the root directory of your website. Just for me, my react project is `React-With-Echarts/website`. And by the way, github pages will automatically choose your github project as the default directory, so actually we needn't to write the path of your repository. 
+That's take your react project directory as the root directory of your website. Just for me, my react project is `React-With-Echarts/website`. And by the way, github pages will automatically choose your github project as the default directory, so actually we needn't to write the path of your project. 
 
 ### Step 2: Install `gh-pages` and add `deploy` to `scripts` in `package.json`
 There we need to install `gh-pages` library in order to deploy our project using gh-pages in github.
@@ -45,7 +45,7 @@ There we need to install `gh-pages` library in order to deploy our project using
 npm install --save gh-pages
 ```
 Add the following scripts in your `package.json`:
-```json
+```
   "scripts": {
 +   "predeploy": "npm run build",
 +   "deploy": "gh-pages -d build",
