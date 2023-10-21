@@ -4,17 +4,23 @@ import 'echarts-gl';
 
 export default function App() {
   useEffect(() => {
-    var ThreeDBar, SpiralCurve;
+    var ThreeDBar, SpiralCurve, NormalSurface;
     if (ThreeDBar !== null && ThreeDBar !== undefined && ThreeDBar !== ''){
       ThreeDBar.dispose();
     }
     if (SpiralCurve !== null && SpiralCurve !== undefined && SpiralCurve !== ''){
       SpiralCurve.dispose();
     }
+    if (NormalSurface !== null && NormalSurface !== undefined && NormalSurface !== ''){
+      NormalSurface.dispose();
+    }
+
     var dom1 = document.getElementById('ThreeDBar');
     var dom2 = document.getElementById('SpiralCurve');
+    var dom3 = document.getElementById('NormalSurface');
     ThreeDBar = echarts.init(dom1);
     SpiralCurve = echarts.init(dom2);
+    NormalSurface = echarts.init(dom3);
 
     // set data
     var year = ["0", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990"];
@@ -3816,12 +3822,86 @@ export default function App() {
     if (option2 && typeof option2 === "object") {
       SpiralCurve.setOption(option2, true);
     }
+
+    var option3 = null;
+    NormalSurface.setOption(option3 = {
+      tooltip: {},
+      backgroundColor: '#fff',
+      visualMap: {
+        show: false,
+        dimension: 2,
+        min: 0,
+        max: 0.18,
+        inRange: {
+          color: [
+            '#313695',
+            '#4575b4',
+            '#74add1',
+            '#abd9e9',
+            '#e0f3f8',
+            '#ffffbf',
+            '#fee090',
+            '#fdae61',
+            '#f46d43',
+            '#d73027',
+            '#a50026'
+          ]
+        }
+      },
+      xAxis3D: {
+        type: 'value',
+        max: 3,
+        min: -3
+      },
+      yAxis3D: {
+        type: 'value',
+        max: 3,
+        min:-3
+      },
+      zAxis3D: {
+        type: 'value'
+      },
+      grid3D: {
+        viewControl: {
+          // projection: 'orthographic',
+          autoRotate: true
+        }
+      },
+      series: [
+        {
+          type: 'surface',
+          wireframe: {
+            // show: false
+          },
+          equation: {
+            x: {
+              max: 3,
+              min: -3,
+              step: 0.05
+            },
+            y: {
+              max: 3,
+              min: -3,
+              step: 0.05
+            },
+            z: function (x, y) {
+              return (1/(2* Math.PI))*Math.exp(-((x ** 2) + (y ** 2)) / 2);
+            }
+          }
+        }
+      ]
+    });
+
+    if (option3 && typeof option3 === "object") {
+      NormalSurface.setOption(option3, true);
+    }
   }, []);
 
   return (
     <div>
       <div id="ThreeDBar" style={{ height: "500px" }}></div>
       <div id="SpiralCurve" style={{ height: "500px" }}></div>
+      <div id="NormalSurface" style={{ height: "500px" }}></div>
     </div>
   );
 }
