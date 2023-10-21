@@ -4,7 +4,7 @@ import 'echarts-gl';
 
 export default function App() {
   useEffect(() => {
-    var ThreeDBar, SpiralCurve, NormalSurface;
+    var ThreeDBar, SpiralCurve, NormalSurface, Sphere;
     if (ThreeDBar !== null && ThreeDBar !== undefined && ThreeDBar !== ''){
       ThreeDBar.dispose();
     }
@@ -14,13 +14,18 @@ export default function App() {
     if (NormalSurface !== null && NormalSurface !== undefined && NormalSurface !== ''){
       NormalSurface.dispose();
     }
+    if (Sphere !== null && Sphere !== undefined && Sphere !== ''){
+      Sphere.dispose();
+    }
 
     var dom1 = document.getElementById('ThreeDBar');
     var dom2 = document.getElementById('SpiralCurve');
     var dom3 = document.getElementById('NormalSurface');
+    var dom4 = document.getElementById('Sphere');
     ThreeDBar = echarts.init(dom1);
     SpiralCurve = echarts.init(dom2);
     NormalSurface = echarts.init(dom3);
+    Sphere = echarts.init(dom4);
 
     // set data
     var year = ["0", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990"];
@@ -3687,10 +3692,6 @@ export default function App() {
       [10, 365, 13.0]]
     
     var option1 = null;
-    var valMin = Infinity;
-    var valMax = -Infinity;
-    console.log(valMin, valMax);
-
     ThreeDBar.setOption(option1 = {
 
         visualMap: {
@@ -3895,13 +3896,81 @@ export default function App() {
     if (option3 && typeof option3 === "object") {
       NormalSurface.setOption(option3, true);
     }
+
+    var option4 = null;
+    Sphere.setOption(option4 = {
+      tooltip: {},
+      visualMap: {
+        show: false,
+        dimension: 2,
+        min: -5,
+        max: 5,
+        inRange: {
+          color: [
+            '#313695',
+            '#4575b4',
+            '#74add1',
+            '#abd9e9',
+            '#e0f3f8',
+            '#ffffbf',
+            '#fee090',
+            '#fdae61',
+            '#f46d43',
+            '#d73027',
+            '#a50026'
+          ]
+        }
+      },
+      xAxis3D: {},
+      yAxis3D: {},
+      zAxis3D: {},
+      grid3D: {
+        viewControl: {
+          autoRotate: true
+        }
+      },
+      series: [
+        {
+          type: 'surface',
+          parametric: true,
+          // shading: 'albedo',
+          parametricEquation: {
+            u: {
+              min: -Math.PI,
+              max: Math.PI,
+              step: Math.PI / 20
+            },
+            v: {
+              min: 0,
+              max: Math.PI,
+              step: Math.PI / 20
+            },
+            x: function (u, v) {
+              return 5*Math.sin(v) * Math.cos(u);
+            },
+            y: function (u, v) {
+              return 5*Math.sin(v) * Math.sin(u);
+            },
+            z: function (u, v) {
+              return 5*Math.cos(v);
+            }
+          }
+        }
+      ]
+    });
+
+    if (option4 && typeof option4 === "object") {
+      Sphere.setOption(option4, true);
+    }
   }, []);
 
+  
   return (
     <div>
       <div id="ThreeDBar" style={{ height: "500px" }}></div>
       <div id="SpiralCurve" style={{ height: "500px" }}></div>
       <div id="NormalSurface" style={{ height: "500px" }}></div>
+      <div id="Sphere" style={{ height: "500px" }}></div>
     </div>
   );
 }
