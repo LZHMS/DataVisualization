@@ -4,13 +4,18 @@ import 'echarts-gl';
 
 export default function App() {
   useEffect(() => {
-    var myChart;
-    var dom = document.getElementById('container');
-    if (myChart !== null && myChart !== undefined && myChart !== ''){
-        myChart.dispose();
+    var ThreeDBar, SpiralCurve;
+    if (ThreeDBar !== null && ThreeDBar !== undefined && ThreeDBar !== ''){
+      ThreeDBar.dispose();
     }
-    myChart = echarts.init(dom);
-    
+    if (SpiralCurve !== null && SpiralCurve !== undefined && SpiralCurve !== ''){
+      SpiralCurve.dispose();
+    }
+    var dom1 = document.getElementById('ThreeDBar');
+    var dom2 = document.getElementById('SpiralCurve');
+    ThreeDBar = echarts.init(dom1);
+    SpiralCurve = echarts.init(dom2);
+
     // set data
     var year = ["0", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990"];
     var date = ["0", "1/1","1/2", "1/3", "1/4", "1/5", "1/6", "1/7", "1/8", "1/9", "1/10", "1/11", "1/12", "1/13", "1/14", "1/15", "1/16", "1/17", "1/18", "1/19", "1/20", "1/21", "1/22", "1/23", "1/24", "1/25", "1/26", "1/27", "1/28", "1/29", "1/30", "1/31",
@@ -3675,17 +3680,17 @@ export default function App() {
       [10, 364, 15.7],
       [10, 365, 13.0]]
     
-    var option = null;
+    var option1 = null;
     var valMin = Infinity;
     var valMax = -Infinity;
     console.log(valMin, valMax);
 
-    myChart.setOption(option = {
+    ThreeDBar.setOption(option1 = {
 
         visualMap: {
           min: 5,
           max: 25,
-          // show: true,
+          show: false,
           inRange: {
             color: [
               '#313695',
@@ -3729,7 +3734,7 @@ export default function App() {
           }
         },
         viewControl: {
-          // autoRotate: true
+          autoRotate: true
         }
       },
       series: [{
@@ -3744,14 +3749,79 @@ export default function App() {
         }]
     });
 
-    if (option && typeof option === "object") {
-      myChart.setOption(option, true);
+    if (option1 && typeof option1 === "object") {
+      ThreeDBar.setOption(option1, true);
+    }
+
+    data = [];
+    // Parametric curve
+    for (var t = 0; t < 5; t += 0.01) {
+      var x = 5 * Math.sin(2*Math.PI * t);
+      var y = 5 * Math.cos(2*Math.PI * t);
+      var z = t;
+      data.push([x, y, z]);
+    }
+    console.log(data.length);
+    var option2 = null;
+    SpiralCurve.setOption(option2 = {
+      tooltip: {},
+      backgroundColor: '#fff',
+      visualMap: {
+        show: false,
+        dimension: 2,
+        min: 0,
+        max: 5,
+        inRange: {
+          color: [
+            '#313695',
+            '#4575b4',
+            '#74add1',
+            '#abd9e9',
+            '#e0f3f8',
+            '#ffffbf',
+            '#fee090',
+            '#fdae61',
+            '#f46d43',
+            '#d73027',
+            '#a50026'
+          ]
+        }
+      },
+      xAxis3D: {
+        type: 'value'
+      },
+      yAxis3D: {
+        type: 'value'
+      },
+      zAxis3D: {
+        type: 'value'
+      },
+      grid3D: {
+        viewControl: {
+          projection: 'orthographic',
+          autoRotate: true
+        }
+      },
+      series: [
+        {
+          type: 'line3D',
+          data: data,
+          lineStyle: {
+            width: 4
+          }
+        }
+      ]
+    });
+
+    if (option2 && typeof option2 === "object") {
+      SpiralCurve.setOption(option2, true);
     }
   }, []);
 
   return (
     <div>
-      <div id="container" style={{ width: "100%", height: "880px" }}></div>
+      <div id="ThreeDBar" style={{ height: "500px" }}></div>
+      <div id="SpiralCurve" style={{ height: "500px" }}></div>
     </div>
   );
 }
