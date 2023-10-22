@@ -31,6 +31,8 @@ Now we can make some experiments with the echarts library about data visualizati
 ### 3D Bar
 <img src="https://cdn.jsdelivr.net/gh/LZHMS/picx-images-hosting@master/EBlog/Courses/image.4h2k896widm0.webp" alt="image" />
 
+
+
 ## Deploy React Project to Github Pages(Specifically for Projects)
 ### Step 1: Add `homepage` to `package.json`
 Open your `package.json` and add a `homepage` field for your project, taking my project as an example:
@@ -62,7 +64,7 @@ Another point is that if the name of your local repository is not `origin` which
 ### Step 4: Ensure your project’s settings use `gh-pages`
 <img src="https://cdn.jsdelivr.net/gh/LZHMS/picx-images-hosting@master/EBlog/Courses/image.3xxie10e26w0.png" alt="image" />
 
-## Projects Display: https://lzhms.github.io/React-With-Echarts/
+## Projects Display: https://lzhms.github.io/DataVisualization/
 
 ## Contributors
 + [Zhihao Li](https://lzhms.github.io/)
