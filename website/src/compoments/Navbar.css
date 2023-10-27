@@ -1,0 +1,95 @@
+.mid {
+	background-color: rgb(13, 174, 139);
+	display: inline-block;
+	width: 100%;
+	margin: auto;
+}
+
+.navbar{
+ 
+	display:inline-block;
+}
+
+
+
+
+.navbar li{
+
+list-style: none;
+display:inline-block;
+
+margin:auto;
+}
+
+.navbar li a{
+text-decoration: none;
+color:rgb(151, 7, 247);
+font-family: Georgia, serif;
+font-size: 18px;
+padding:8px 20px;
+}
+
+.navbar li a:hover{
+color:rgb(151, 7, 247);
+border: darkmagenta;
+border-radius: 2px;
+font-size: 20px;
+}
+
+.navbar li a:active{
+background-color: rgb(13, 174, 139);
+border-radius: 5px;
+}
+.right {
+	background-color: rgb(13, 174, 139);
+display: inline-block;
+width: 8%;
+
+font-size: 18px;
+padding: 18px 26px;
+color: #1d19e7;
+}
+
+.right {
+	background-color: rgb(13, 174, 139);
+display: inline-block;
+width: 8%;
+
+font-size: 18px;
+padding: 18px 26px;
+color: #1d19e7;
+}
+.right a{
+text-decoration:none;
+}
+.right:hover{
+font-weight:bolder;
+}
+
+.left {
+background-color: rgb(13, 174, 139);
+display: inline-block;
+width: 17%;
+font-size: 18px;
+padding: 18px 17px;
+color: #1d19e7;
+
+
+}
+.left a{
+text-decoration:none;
+}
+.left:hover{
+font-weight:bolder;
+}
+
+.custom-heading {
+	font-family: 'Microsoft Yahei', sans-serif;
+	background-color: rgb(13, 174, 139);
+	display: inline-block;
+	width: 100%;
+	font-size: 24px;
+	color: #96169f;
+	text-align: center;
+	margin: auto;
+}
